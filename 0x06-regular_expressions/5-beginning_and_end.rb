@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 pattern = /^h.n$/
-argstr = ARGF.argv[0].inspect
+argstr = ARGF.argv[0]
 result = argstr.scan(pattern).flatten
 for i in result
-	print i
+	puts i
 end
-if not i.nil?
+if i.nil?
 	puts
 end

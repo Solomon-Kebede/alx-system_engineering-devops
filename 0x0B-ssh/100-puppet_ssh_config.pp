@@ -7,6 +7,19 @@
 #     Your SSH client configuration must be configured to use the private key `~/.ssh/school`
 #     Your SSH client configuration must be configured to refuse to authenticate using a password
 
+# ensure private key exists
 file {'~/.ssh/school':
   ensure => file
+}
+
+# Turn off passwd auth
+exec {'Turn off passwd auth':
+  command  => 'echo "    PasswordAuthentication no" >> /etc/ssh/ssh_config',
+  provider => 'shell'
+}
+
+# Declare identity file
+exec {'Declare identity file':
+  command  => 'echo "    IdentityFile ~/.ssh/school" >> /etc/ssh/ssh_config',
+  provider => 'shell'
 }

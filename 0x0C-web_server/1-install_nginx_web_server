@@ -11,5 +11,6 @@
 
 sudo apt-get update -y
 sudo apt-get install -y nginx
+sudo chmod -R 777 /var/www
 sudo echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start

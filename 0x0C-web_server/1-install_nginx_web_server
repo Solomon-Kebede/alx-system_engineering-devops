@@ -13,4 +13,4 @@ apt-get update -y
 apt-get install -y nginx
 mv /var/www/html/index.html /var/www/html/index.html.html
 echo "Hello World!" >> /var/www/html/index.html
-systemctl start nginx
+service nginx start

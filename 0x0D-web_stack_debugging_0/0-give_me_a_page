@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Getting `Apache` running on the container and return a page
+# containing `Hello Holberton` when querying the root of it.
+sudo apt update -y
+sudo apt install -y apache2

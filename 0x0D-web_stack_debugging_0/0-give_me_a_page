@@ -4,5 +4,5 @@
 sudo apt update -y
 sudo apt install -y apache2
 sudo echo "Hello Holberton" > /var/www/html/index.html
-sudo systemctl enable apache2
 sudo service apache2 start
+sudo systemctl enable apache2

@@ -3,3 +3,5 @@
 # containing `Hello Holberton` when querying the root of it.
 sudo apt update -y
 sudo apt install -y apache2
+sudo echo "Hello Holberton" > /var/www/html/index.html
+sudo systemctl enable apache2

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# adjust nginx config ports 8080 with port 80
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+# start nginx service on the adjusted port
+service nginx start

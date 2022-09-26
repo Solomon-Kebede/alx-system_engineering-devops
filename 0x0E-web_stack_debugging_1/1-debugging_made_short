@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default		# adjust nginx config ports 8080 with port 80
+result="$(ps ux | pgrep nginx | head -n 1)"		# get ps list of nginx master worker
+pid=$(echo "$result" | cut -d ' ' -f 9)		# determine pid of running nginx serivce
+kill -HUP "$pid"		# start nginx service on the adjusted port by sending the hangup signal to reload its config file 

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on your `lb-01` server.
+# Requirements:
+#     -Configure HAproxy so that it send traffic to `web-01` and `web-02`
+#     -Distribute requests using a roundrobin algorithm
+#     -Make sure that HAproxy can be managed via an init script
+#     -Make sure that your servers are configured with the right 
+#      hostnames: `[STUDENT_ID]-web-01` and `[STUDENT_ID]-web-02`. 
+#      If not, follow this `[tutorial]
+# (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-hostname)`.
+#     -For your answer file, write a Bash script that configures a new 
+#     Ubuntu machine to respect above requirements
+
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.6 -y
+sudo apt-get install haproxy=2.6.\* -y
+
+echo -e "frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend myservers\n" >> /etc/haproxy/haproxy.cfg
+echo -e "backend myservers\n\tbalance roundrobin\n\tmode http\n\tserver web1 3.238.87.140:80 check\n\tserver web2 34.204.198.203:80 check" >> /etc/haproxy/haproxy.cfg
+sudo systemctl restart haproxy

@@ -18,4 +18,4 @@ sudo chmod 777 /etc/haproxy/haproxy.cfg
 echo -e "frontend http\n\tbind *:80\n\tmode http\n\tdefault_backend myservers\n" >> /etc/haproxy/haproxy.cfg
 echo -e "backend myservers\n\tbalance roundrobin\n\tmode http\n\tserver web1 3.238.87.140:80 check\n\tserver web2 34.204.198.203:80 check" >> /etc/haproxy/haproxy.cfg
 sudo chmod 644 /etc/haproxy/haproxy.cfg
-kill -HUP "$(pgrep -lf haproxy | cut -d ' ' -f 1)"
+sudo killall -HUP haproxy

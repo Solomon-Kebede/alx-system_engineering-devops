@@ -1,5 +1,5 @@
 sudo apt update -y
-sudo apt install uwf -y
+sudo apt install ufw -y
 sudo ufw default deny incoming
 sudo ufw allow ssh
 sudo ufw allow http

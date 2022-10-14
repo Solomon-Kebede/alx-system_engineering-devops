@@ -5,6 +5,6 @@
 #     You cannot use `apt-get remove`
 #     Write a Bash script that configures the container to fit the above requirements
 
-sed -i 's/80 default_server/8080 default_server/g' '/etc/nginx/sites-enabled/default'
+sed -i 's/80 default_server/8080 default_server/g' '/etc/nginx/sites-available/default'
 chmod 644 /etc/nginx/nginx.conf
 sudo -u nginx service nginx start

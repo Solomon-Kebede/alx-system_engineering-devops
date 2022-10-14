@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Minimalisitic version of task#1 (7 lines long or less)
+sed -i 's/80 default_server/8080 default_server/g' '/etc/nginx/sites-available/default'
+chmod 644 /etc/nginx/nginx.conf
+pkill apache2
+sudo -u nginx service nginx start

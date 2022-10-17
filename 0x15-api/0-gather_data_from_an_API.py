@@ -20,32 +20,25 @@ Requirements:
         `TASK_TITLE` (with 1 tabulation and 1 space before the `TASK_TITLE`)
 '''
 
-
 import requests
 import sys
 
-
-def todos(employee_id):
-    '''Retrieves user todos'''
-    base_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'
-    url = base_url.format(employee_id)
-    res = requests.get(url)
-    return res.json()
+todos_url = 'https://jsonplaceholder.typicode.com/users/{}/todos'
+user_data_url = 'https://jsonplaceholder.typicode.com/users/{}'
 
 
-def user(employee_id):
-    '''Retrieves user data'''
-    base_url = 'https://jsonplaceholder.typicode.com/users/{}'
+def retrieve(base_url, employee_id):
+    '''Retrieves todos/user data'''
     url = base_url.format(employee_id)
     res = requests.get(url)
     return res.json()
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
-        string_1 = 'Employee {} is done with tasks({}/{})'
+        string_1 = 'Employee {} is done with tasks({}/{}):'
         employee_id = sys.argv[1]
-        employee_todos = todos(employee_id)
-        employee_data = user(employee_id)
+        employee_todos = retrieve(todos_url, employee_id)
+        employee_data = retrieve(user_data_url, employee_id)
         completed = []
         for employee_todo in employee_todos:
             if employee_todo.get('completed') is True:

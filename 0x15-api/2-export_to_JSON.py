@@ -34,12 +34,12 @@ if __name__ == '__main__':
         employee_data = retrieve(user_data_url, employee_id)
         result = {}
         result[employee_id] = []
-        task_dict = {}
         filename = '{}.json'.format(employee_id)
         for employee_todo in employee_todos:
-                task_dict['task'] = employee_todo.get('title')
-                task_dict['completed'] = employee_todo.get('completed')
-                task_dict['username'] = employee_data.get('username')
-                result[employee_id].append(task_dict)
+            task_dict = {}
+            task_dict['task'] = employee_todo.get('title')
+            task_dict['completed'] = employee_todo.get('completed')
+            task_dict['username'] = employee_data.get('username')
+            result[employee_id].append(task_dict)
         with open(filename, 'w') as json_file:
             json_file.write(json.dumps(result))

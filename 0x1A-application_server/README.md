@@ -27,3 +27,11 @@
 **Step 11**: Restart Agent running as a service	`sudo service datadog-agent restart`
 
 **Step 12**: `python3 -m web_flask.0-hello_route`
+
+## Task 1. Set up production with Gunicorn
+
+**Step 0**: Run the flask app using `python3 -m web_flask.0-hello_route`
+
+**Step 1**: Minimize the running app using `CTRL + Z` and run in the background using `bg` or open a new terminal
+
+**Step 2**: Run `gunicorn --bind 0.0.0.0:6000 web_flask.0-hello_route:app`

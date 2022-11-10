@@ -4,7 +4,6 @@ exec { 'from_4_to_10-workers':
   user     => 'root'
 }
 
-
 exec { 'service nginx restart':
   command  => 'service nginx restart',
   provider => 'shell',

@@ -18,5 +18,5 @@ CREATE TABLE IF NOT EXISTS nexus6(
     PRIMARY KEY(id)
 );
 INSERT INTO nexus6 (name) VALUES ('Leon');
-GRANT SELECT ON *.* TO 'holberton_user'@'localhost';
+GRANT SELECT ON tyrell_corp.nexus6 TO 'holberton_user'@'localhost';
 ```

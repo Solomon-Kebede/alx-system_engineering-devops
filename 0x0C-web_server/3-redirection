@@ -15,7 +15,7 @@ echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start
 # New Addition
 replace="listen \[::\]:80 default_server;"
-replacement="listen \[::\]:80 default_server;\n\trewrite \/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+replacement="listen \[::\]:80 default_server;\n\tlocation \/redirect_me {rewrite \/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent; return 301;}"
 file="/etc/nginx/sites-available/default"
 sudo sed -i s/"$replace"/"$replacement"/g "$file"
 sudo service nginx restart

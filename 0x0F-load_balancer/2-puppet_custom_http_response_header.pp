@@ -1,6 +1,6 @@
 # execute 'apt-get update'
 exec { 'apt-update':
-  command  => 'sudo /usr/bin/apt-get update',
+  command  => '/usr/bin/sudo /usr/bin/apt-get update',
   provider => 'shell'
 }
 
@@ -13,7 +13,7 @@ package { 'nginx':
 # set directory permissions for file writing
 exec { 'chmod /var/www':
   require  => Package['nginx'],
-	command  => '/usr/bin/chmod -R 777 /var/www',
+	command  => '/usr/bin/sudo /usr/bin/chmod -R 777 /var/www',
 	provider => 'shell'
 }
 
@@ -34,13 +34,13 @@ service { 'nginx start':
 # edit server response header
 exec { 'edit-header':
   require  => Service['nginx start'],
-	command  => '/usr/bin/sed -i 's/404;/404;add_header X-Served-By $hostname;/g' /etc/nginx/sites-available/default',
+	command  => '/usr/bin/sudo /usr/bin/sed -i "s/404;/404;add_header X-Served-By $hostname;/g" /etc/nginx/sites-available/default',
 	provider => 'shell'
 }
 
 # restart nginx service
 exec { 'nginx restart':
   require  => Exec['edit-headerx'],
-  command  => 'sudo /usr/sbin/service nginx restart'
+  command  => '/usr/bin/sudo /usr/sbin/nginx -s stop; /usr/bin/sudo /usr/sbin/nginx'
 	provider => 'shell'
 }

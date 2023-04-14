@@ -7,12 +7,11 @@
 # Defne sigterm handler function
 function sigterm_handler {
     echo "I am invincible!!!"
-    exit 0
 }
-# Set up the trap
-trap sigterm_handler SIGTERM SIGINT
 
 while true; do 
     echo "To infinity and beyond"
     sleep 2
+    # Set up the trap
+    trap sigterm_handler SIGTERM
 done

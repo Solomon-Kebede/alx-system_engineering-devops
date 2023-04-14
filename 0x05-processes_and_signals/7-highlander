@@ -7,7 +7,7 @@
 # Defne sigterm handler function
 function sigterm_handler {
     echo "I am invincible!!!"
-    exit 1
+    exit 0
 }
 # Set up the trap
 trap sigterm_handler SIGTERM SIGINT

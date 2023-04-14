@@ -10,7 +10,7 @@ function sigterm_handler {
     exit 1
 }
 # Set up the trap
-trap sigterm_handler SIGTERM
+trap sigterm_handler SIGTERM SIGINT
 
 while true; do 
     echo "To infinity and beyond"

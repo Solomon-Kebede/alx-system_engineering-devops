@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #a Bash script that stops
 #"4-to_infinity_and_beyond" process
-for i in pgrep $(4-to_infinity_and_beyond); do
-	kill "$i"; 
-done
+
+#for i in pgrep $(4-to_infinity_and_beyond); do
+#	kill "$i"; 
+#done
+
+pkill -f ./4-to_infinity_and_beyond
